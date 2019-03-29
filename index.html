@@ -64,7 +64,6 @@
 						<li>Remoting</li>
 						<li>System and application introspection and debugging</li>
 						<li>Network debugging</li>
-						<li>Linux containers</li>
 					</ul>
 					<p class="font75">This workshop is meant as an exposure to commonly-used tools; there is no intended link between everything mentioned today, although some stories will be thrown in here and there to provide some rationale and context.</p>
 				</section>
@@ -94,9 +93,12 @@
 					<p>More: <a href="https://support.google.com/websearch/answer/2466433">Google docs</a>; <a href="https://ahrefs.com/blog/google-advanced-search-operators/">External docs</a></p>
 				</section>
 				<section>
-					<h2>Firefox bookmark keywords</h2>
-					<p>No real equivalent exists in Chrome/ium.</p>
-					<!-- TODO: screenshot -->
+					<section>
+						<h2>Firefox bookmark keywords</h2>
+						<p>No real equivalent exists in Chrome/ium.</p>
+						<img src="img/ff0.png">
+						<img src="img/ff1.png">
+					</section>
 				</section>
 				<section>
 					<h2>Browser extensions</h2>
@@ -191,9 +193,8 @@
 				<section>
 					<h2>SSH on Windows</h2>
 					<p>Did you know? Microsoft ported OpenSSH to Windows.</p>
-					<p>It is included by default from Windows 10 1803 and up. Try it!</p>
-					<!-- TODO screenshot here -->
-					<p>If not, <a href="https://superuser.com/a/1348488">see here</a>.</p>
+					<p>It is included by default from Windows 10 1803 and up. Try it! If not, <a href="https://superuser.com/a/1348488">see here</a>.</p>
+					<img src="img/win-ssh.png" style="max-height: 20rem;">
 				</section>
 				<section>
 					<section>
@@ -219,6 +220,8 @@
 						<ul>
 							<li>On Windows >=10 1803, you can just use ssh-keygen.</li>
 							<li>Alternatively, use <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">PuTTY/PuTTYgen</a>.</li>
+							<img src="img/puttygen0.png" style="max-height: 25rem;">
+							<img src="img/puttygen1.png" style="max-height: 25rem;">
 						</ul>
 					</section>
 				</section>
@@ -246,7 +249,7 @@ ssh ...</pre>
 					<section>
 						<h2>SSH key agents</h2>
 						<p>On Windows with PuTTY, use <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">Pageant</a></p>
-						<!-- Screenshot -->
+						<img src="img/pageant0.png" style="max-height: 25rem;">
 					</section>
 				</section>
 				<section>
@@ -272,6 +275,10 @@ ssh ...</pre>
 						</ul>
 						<p>You could even use this with your browser, if you needed to e.g. quickly bypass a firewall.</p>
 					</section>
+					<section>
+						<h2>Windows with PuTTY</h2>
+						<img src="img/putty-tunnel0.png">
+					</section>
 				</section>
 				<section>
 					<h2>SSH X forwarding</h2>
@@ -279,6 +286,7 @@ ssh ...</pre>
 					<p>This lets you interact with graphical programs on the remote.</p>
 					<p><code>ssh -X</code></p>
 					<p>(For SoC students: try this with Sunfire!)</p>
+					<p>(Windows: <a href="http://x.cygwin.com/">Cygwin</a> with PuTTY; out of scope)</p>
 				</section>
 				<section>
 					<section>
@@ -473,7 +481,7 @@ puts("Hello world!")                    = 13
 				<section>
 					<h2><a href="https://docs.microsoft.com/en-us/sysinternals/downloads/procmon">ProcMon</a> (Windows)</h2>
 					<p>Windows alternative for ltrace/strace.</p>
-					<!-- Screenshot -->
+					<img src="img/procmon0.png">
 				</section>
 				<section>
 					<h2>time</h2>
@@ -575,7 +583,7 @@ Performance counter stats for './hello':
 					</section>
 					<section>
 						<h2>Windows Event Viewer</h2>
-						<!-- Screenshot -->
+						<img src="img/eventviewer0.png">
 					</section>
 				</section>
 				<section>
@@ -641,7 +649,8 @@ tmpfs             1.2G   28K  1.2G   1% /run/user/1000</pre>
 					</section>
 					<section>
 						<h2>Windows: Disk Management</h2>
-						<!-- Screenshot -->
+						<p>Also <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/diskpart"><code>diskpart</code></a>; out of scope</p>
+						<img src="img/diskmgmt.png">
 					</section>
 				</section>
 				<section>
@@ -663,7 +672,7 @@ tmpfs             1.2G   28K  1.2G   1% /run/user/1000</pre>
 					</section>
 					<section>
 						<h2>Windows: <a href="https://windirstat.net/">WinDirStat</a></h2>
-						<!-- Screenshot -->
+						<img src="img/windirstat.png">
 					</section>
 				</section>
 				<section>
@@ -726,11 +735,10 @@ traceroute to 1.0.0.1 (1.0.0.1), 30 hops max, 60 byte packets
 					</ul>
 					<p>Some flags may require privileges. <code>tracepath</code> is an alternative that does not require root.</p>
 				</section>
-				<section>
-					<section class="font75">
-						<h2>Ping</h2>
-						<p>Send packets to a host and see if it responds</p>
-						<pre><strong>$ ping -A 1.0.0.1</strong>
+				<section class="font75">
+					<h2>Ping</h2>
+					<p>Send packets to a host and see if it responds</p>
+					<pre><strong>$ ping -A 1.0.0.1</strong>
 PING 1.0.0.1 (1.0.0.1) 56(84) bytes of data.
 64 bytes from 1.0.0.1: icmp_seq=2 ttl=54 time=2.100 ms
 ...
@@ -739,39 +747,138 @@ PING 1.0.0.1 (1.0.0.1) 56(84) bytes of data.
 --- 1.0.0.1 ping statistics ---
 43 packets transmitted, 29 received, 32.5581% packet loss, time 241ms
 rtt min/avg/max/mdev = 2.740/3.476/10.983/1.466 ms, ipg/ewma 219.812/3.802 ms</pre>
-						<p class="font45">NUS network was having problems ☹️</p>
-						<p class="mb0">Common flags</p>
-						<ul>
-							<li><code>-A</code>: adaptive (send next packet on receiving response)</li>
-							<li><code>-q</code>: quiet</li>
-							<li><code>-f</code>: flood (don't wait for response); needs root</li>
-							<li><code>-n</code>: don't resolve addresses</li>
-							<li><code>-4/-6</code>: use IPv4/IPv6</li>
-						</ul>
-					</section>
-					<section>
-						<h2>hping (ping using TCP, etc.)</h2>
-						<!-- Todo -->
-					</section>
+					<p class="font45">NUS network was having problems ☹️</p>
+					<p class="mb0">Common flags</p>
+					<ul>
+						<li><code>-A</code>: adaptive (send next packet on receiving response)</li>
+						<li><code>-q</code>: quiet</li>
+						<li><code>-f</code>: flood (don't wait for response); needs root</li>
+						<li><code>-n</code>: don't resolve addresses</li>
+						<li><code>-4/-6</code>: use IPv4/IPv6</li>
+					</ul>
 				</section>
-				<section class="font75">
-					<h2>nslookup/dig</h2>
-					<p>Perform DNS queries</p>
-					<pre><strong>$ nslookup google.com</strong>
-Server:		1.0.0.1
-Address:	1.0.0.1#53
+				<section>
+					<section class="font75">
+						<h2>nslookup</h2>
+						<p>Perform DNS queries</p>
+						<pre><strong>$ nslookup google.com</strong>
+Server:   1.0.0.1
+Address:  1.0.0.1#53
 
 Non-authoritative answer:
-Name:	google.com
-Address: 74.125.24.100
-Name:	google.com
-Address: 2404:6800:4003:c02::8b
+Name:     google.com
+Address:  74.125.24.100
+Name:     google.com
+Address:  2404:6800:4003:c02::8b
+
 <strong>$ nslookup -query=MX google.com</strong>
-Server:		1.0.0.1
-Address:	1.0.0.1#53
+Server:   1.0.0.1
+Address:  1.0.0.1#53
 
 Non-authoritative answer:
 google.com	mail exchanger = 40 alt3.aspmx.l.google.com.</pre>
+					</section>
+					<section>
+						<h2>nslookup</h2>
+						<p>Use a different nameserver</p>
+						<pre><strong>$ nslookup google.com 8.8.8.8</strong>
+Server:		8.8.8.8
+Address:	8.8.8.8#53
+
+Non-authoritative answer:
+Name:	google.com
+Address: 74.125.24.138
+Name:	google.com
+Address: 2404:6800:4003:c01::65</pre>
+					</section>
+					<section>
+						<h2>dig</h2>
+						<pre><strong>$ dig @8.8.8.8 google.com MX</strong>
+
+;; ANSWER SECTION:
+google.com.		323	IN	MX	10 aspmx.l.google.com.
+
+;; Query time: 5 msec
+;; SERVER: 8.8.8.8#53(8.8.8.8)
+;; WHEN: Sat Mar 30 02:28:35 +08 2019
+;; MSG SIZE  rcvd: 147</pre>
+						<p>What's the difference? <code>nslookup</code> uses the OS's resolver libraries; <code>nslookup</code> uses its own. They are otherwise used for the same purpose.</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>whois</h2>
+						<p>Look up information on an IP or domain</p>
+						<pre class="font45"><strong>$ whois nus.edu.sg</strong>
+
+----------------------------------------------------------------------
+ SGNIC WHOIS Server
+----------------------------------------------------------------------
+
+The following data is provided for information purposes only.
+
+Registrar:   SINGNET PTE LTD
+
+    Domain Name:		NUS.EDU.SG
+    Creation Date:		03-Sep-1996 00:00:00
+    Modified Date:		28-Aug-2018 09:31:22
+    Expiration Date:		03-Sep-2019 00:00:00
+    Domain Status:		OK
+    Domain Status:		VerifiedID@SG-Not Required
+
+
+    Registrant:
+
+        Name:           NATIONAL UNIVERSITY OF SINGAPORE (SGNIC-ORGNA66731)</pre>
+					</section>
+					<section>
+						<h2>whois</h2>
+						<pre class="font45"><strong>$ whois 4.2.2.1</strong>
+
+NetRange:       4.0.0.0 - 4.255.255.255
+CIDR:           4.0.0.0/8
+NetName:        LVLT-ORG-4-8
+NetHandle:      NET-4-0-0-0-1
+Parent:          ()
+NetType:        Direct Allocation
+OriginAS:
+Organization:   Level 3 Parent, LLC (LPL-141)
+RegDate:        1992-12-01
+Updated:        2018-02-20
+Ref:            https://rdap.arin.net/registry/ip/4.0.0.0</pre>
+					</section>
+				</section>
+				<section class="center">
+					<h1>Linux containers</h1>
+					<p>This is extra, and very brief, material (not going through live)</p>
+				</section>
+				<section>
+					<h2>Why containers?</h2>
+					<p>If you need another distribution's environment (e.g. you run Arch but need Debian), or if you need to test something in a clean environment, or just need some isolation, etc</p>
+					<h2>Why not a VM?</h2>
+					<p>A container is much lighter in terms of memory/storage/CPU resources, and will run faster, compared to a VM.</p>
+				</section>
+				<section>
+					<h2>Plain chroot</h2>
+					<p>The most basic "container".</p>
+					<p class="mb0">Basic steps:</p>
+					<ol>
+						<li>Bootstrap the chroot: <a href="https://wiki.debian.org/Debootstrap">debootstrap</a>, <a href="https://wiki.archlinux.org/index.php/Install_from_existing_Linux#Creating_a_chroot">pacstrap</a>, etc</li>
+						<li>Chroot into it</li>
+						<li>Done!</li>
+					</ol>
+				</section>
+				<section>
+					<h2>LXC/LXD</h2>
+					<p>Tools to build and run containers.</p>
+					<p><a href="https://linuxcontainers.org/lxd/getting-started-cli/">Introduction guide</a></p>
+					<h2>Docker</h2>
+					<p>Powerful platform to build and run containers.</p>
+					<p>A topic for an entire workshop.</p>
+					<p><a href="https://docs.docker.com/get-started/">Introduction guide</a></p>
+				</section>
+				<section class="center">
+					<h1>Thank you!</h1>
 				</section>
 			</div>
 		</div>
